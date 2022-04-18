@@ -6,17 +6,11 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 18:22:49 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/18 19:21:03 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	error_exit(void)
-{
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
 
 static int	check_error(char *s)
 {
@@ -45,7 +39,7 @@ static t_list	*do_parse(char **argv, int start)
 {
 	t_list	*res;
 
-	res = malloc(sizeof(t_list));
+	res = NULL;
 	while (argv[start])
 	{
 		if (!check_error(argv[start]))

@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   common_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: min-kang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 17:54:15 by min-kang          #+#    #+#             */
-/*   Updated: 2021/10/24 21:48:05 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/18 19:22:26 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/18 19:22:58 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_front(t_list **alst, t_list *new)
+int	error_exit(void)
 {
-	t_list	*begin;
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
-	begin = *alst;
-	new->next = begin;
-	*alst = new;
+void	free_list(t_list *lst)
+{
+	t_list	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
 }
