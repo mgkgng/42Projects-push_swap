@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 19:21:03 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:34:15 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@ static int	check_error(char *s)
 	i = -1;
 	while (s[++i])
 	{
-		if (!ft_digit(s[i]))
+		if (!ft_isdigit(s[i]))
 		{
 			if (!i && (s[i] == '-' || s[i] == '+'))
 			{
 				if (!s[i + 1])
 					return (0);
-				continue;
+				continue ;
 			}
 			else
 				return (0);
 		}
 	}
+	return (1);
 }
 
 static t_list	*do_parse(char **argv, int start)
@@ -44,7 +45,7 @@ static t_list	*do_parse(char **argv, int start)
 	{
 		if (!check_error(argv[start]))
 		{
-			free_list(res);
+			ft_lstclear(&res);
 			error_exit();
 		}
 		ft_lstadd_back(&res, ft_lstnew(ft_atoi(argv[start++])));
@@ -55,6 +56,6 @@ static t_list	*do_parse(char **argv, int start)
 t_list	*parse(int argc, char **argv)
 {
 	if (argc == 2)
-		return(do_parse(ft_split(argv[1], ' '), 0));
+		return (do_parse(ft_split(argv[1], ' '), 0));
 	return (do_parse(argv, 1));
 }

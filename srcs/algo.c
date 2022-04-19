@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_c.c                                      :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 19:11:55 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:11:16 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	mini_swap(t_stack *stack)
 		ops(stack, 10, "pb");
 	if (stack->a->nb > stack->a->next->nb
 		&& stack->a->next->nb < ft_lstlast(stack->a)->nb
-		&& max_find(stack->a) == stack->a->nb)
+		&& find_max(stack->a) == stack->a->nb)
 		ops(stack, 3, "ra");
 	else if ((stack->a->nb > stack->a->next->nb)
-		|| (max_find(stack->a) == stack->a->next->nb
-			&& first_min_find(stack->a) == stack->a->nb))
+		|| (find_max(stack->a) == stack->a->next->nb
+			&& find_min(stack->a) == stack->a->nb))
 		ops(stack, 0, "sa");
-	if (first_min_find(stack->a) == stack->a->next->nb)
+	if (find_min(stack->a) == stack->a->next->nb)
 		ops(stack, 3, "ra");
-	else if (first_min_find(stack->a) == ft_lstlast(stack->a)->nb)
+	else if (find_min(stack->a) == ft_lstlast(stack->a)->nb)
 		ops(stack, 6, "rra");
 }
 
@@ -41,22 +41,21 @@ int	check_push(int first_a, int last_a, int first_b)
 	return (0);
 }
 
-void	algo_pushB(t_stack *stack, t_index chunk)
+void	algo_push_b(t_stack *stack, t_index chunk)
 {
 	int	i;
-	int	limit;
-	int	sizeA;
-	int	chunkSize;
+	int	size_a;
+	int	size_chunk;
 
-	sizeA = ft_lstsize(stack->a);
-	chunkSize = 3;
-	if (sizeA > 99)
+	size_a = ft_lstsize(stack->a);
+	size_chunk = 3;
+	if (size_a > 99)
 	{
 		i = 0;
-		while (++i < chunkSize)
+		while (++i < size_chunk)
 		{
 			if ((stack->a->index < chunk.begin || stack->a->index > chunk.end)
-				&& stack->a->pos < sizeA * i / chunkSize)
+				&& stack->a->pos < size_a * i / size_chunk)
 				ops(stack, 10, "pb");
 			else
 				ops(stack, 3, "ra");
@@ -68,7 +67,7 @@ void	algo_pushB(t_stack *stack, t_index chunk)
 		ops(stack, 3, "ra");
 }
 
-void	algo_pushA(t_stack *stack)
+void	algo_push_a(t_stack *stack)
 {
 	while (stack->b)
 	{
@@ -76,14 +75,14 @@ void	algo_pushA(t_stack *stack)
 			ops(stack, 9, "pa");
 		else
 		{
-			put_index(stack->a);
-			put_index(stack->b);
-			make_move(stack, get_shortest(stack));
+			put_index(&stack->a);
+			put_index(&stack->b);
+			make_move(stack, get_shortest(stack->a, stack->b));
 		}
 	}
 }
 
-void	algo_rotateA(t_stack *stack)
+void	algo_rotate_a(t_stack *stack)
 {
 	int	size;
 

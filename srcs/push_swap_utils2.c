@@ -6,12 +6,11 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:20:10 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 19:22:42 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:26:36 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 t_index	get_chunk(t_list *lst)
 {

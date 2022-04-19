@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 13:18:47 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 16:32:33 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/19 16:59:22 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/19 17:00:01 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef COMMON_H
+# define COMMON_H
 
-static void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+# include "libft.h"
 
-void	ft_putstr(char *s)
-{
-	int	i;
+typedef struct s_stack {
+	t_list	*a;
+	t_list	*b;
+}	t_stack;
 
-	i = 0;
-	while (s[i])
-		ft_putchar(s[i++]);
-}
+int	error_exit(void);
+
+#endif

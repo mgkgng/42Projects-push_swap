@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: min-kang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 18:15:01 by min-kang          #+#    #+#             */
-/*   Updated: 2022/01/08 17:10:53 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:15:04 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 + (str[i++] - '0');
 		if (result * minus > INT32_MAX || result * minus < INT32_MIN)
-			exit_error();
+		{
+			ft_putendl_fd("Error", STDERR_FILENO);
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (result * minus);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 13:18:47 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 16:32:33 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/19 16:03:29 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/19 16:04:19 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putchar(char c)
+void	ft_lstclear(t_list **lst)
 {
-	write(1, &c, 1);
-}
+	t_list	*tmp;
 
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		ft_putchar(s[i++]);
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
 }

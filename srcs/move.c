@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 19:09:27 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:08:11 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	compare_move(t_move move, t_move *opt)
 	}
 }
 
-void	rotate_both(t_stack *stack, t_move *move)
+static void	rotate_both(t_stack *stack, t_move *move)
 {
 	while (move->ra > 0 && move->rb > 0)
 	{
@@ -71,44 +71,41 @@ void	make_move(t_stack *stack, t_move move)
 	ops(stack, 9, "pa");
 }
 
-t_move	define_move(t_stack *stack, int sizeA, int sizeB)
+t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
 {
 	t_move	res;
-	int		indexA;
-	int		indexB;
-	int		i;
 
 	ft_bzero(&res, sizeof(t_move));
-	if (stack->a->index <= sizeA / 2)
-		res.ra = indexA;
+	if (a->index <= sizeA / 2)
+		res.ra = a->index;
 	else
-		res.rra = sizeA - indexA;
-	if (stack->b->index <= sizeB / 2)
-		res.rb = indexB;
+		res.rra = sizeA - a->index;
+	if (b->index <= sizeB / 2)
+		res.rb = b->index;
 	else
-		res.rra = sizeB - indexB;
-	 
+		res.rra = sizeB - b->index;
+	return (res);
 }
 
-t_move	get_shortest(t_stack *stack)
+t_move	get_shortest(t_list *a, t_list *b)
 {
-	t_move	shortest;
-	t_list	*beginA;
+	t_move	res;
+	t_list	*begin_a;
 
-	beginA = stack->a;
-	while (stack->b)
+	begin_a = a;
+	while (b)
 	{
-		stack->a = beginA;
-		while (stack->a)
+		a = begin_a;
+		while (a)
 		{
-			if (push_condition(stack->a->nb, ft_lstlast(stack->a)->nb, stack->b->nb))
+			if (check_push(a->nb, ft_lstlast(a)->nb, b->nb))
 			{
-				compare_move(define_move(stack, ft_lstsize(stack->a), ft_lstsize(stack->b)), &shortest);
-				break;
+				compare_move(define_move(a, b, ft_lstsize(a), ft_lstsize(b)), &res);
+				break ;
 			}
-			stack->a = stack->a->next;
+			a = a->next;
 		}
-		stack->b = stack->b->next;
+		b = b->next;
 	}
-	return (shortest);
+	return (res);
 }

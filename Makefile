@@ -1,6 +1,7 @@
-MSRCS =	srcs/main.c srcs/push_swap.c srcs/move.c srcs/algo.c
+MSRCS =	srcs/main.c srcs/push_swap.c srcs/move.c srcs/algo.c \
+		srcs/push_swap_utils.c srcs/push_swap_utils2.c \
 
-CSRCS =	common/push_swap_utils.c common/ops.c common/parse.c
+CSRCS =	 common/ops.c common/parse.c common/common_utils.c
 
 BSRCS =	bonus/main.c bonus/checker.c
 

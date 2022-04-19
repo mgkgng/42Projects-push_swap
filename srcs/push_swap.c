@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:51 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 19:12:16 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:01:25 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	push_swap(t_stack *stack)
 	if (chunk.end - chunk.begin + 1 < 3)
 		mini_swap(stack);
 	else
-		algo_pushB(stack, chunk);
-	algo_pushA(stack);
-	algo_rotateA(stack);
-	free_list(stack);
+		algo_push_b(stack, chunk);
+	algo_push_a(stack);
+	algo_rotate_a(stack);
+	ft_lstclear(&stack->a);
+	ft_lstclear(&stack->b);
 	return (0);
 }
