@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:51 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:01:25 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/21 00:01:16 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	push_swap(t_stack *stack)
 	put_index(&stack->a);
 	put_pos(&stack->a);
 	chunk = get_chunk(stack->a);
-	if (chunk.end - chunk.begin + 1 < 3)
+	if (chunk.end - chunk.begin + 1 == ft_lstsize(stack->a))
+		return (0); // should think about free here
+	else if (chunk.end - chunk.begin + 1 < 3)
 		mini_swap(stack);
 	else
 		algo_push_b(stack, chunk);

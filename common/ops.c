@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:27 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 16:34:28 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/21 00:09:19 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,20 @@ static void	reverse_rotate(t_list **l)
 
 void	ops(t_stack *stack, int op, char *s)
 {
-	t_list	*obj;
+	t_list	**obj;
 
 	if (s)
-		ft_putstr(s);
+		ft_putendl(s);
 	if (!(op % 3))
-		obj = stack->a;
+		obj = &stack->a;
 	else
-		obj = stack->b;
+		obj = &stack->b;
 	if (!(op / 3))
-		swap(&obj);
+		swap(obj);
 	else if (op / 3 == 1)
-		rotate(&obj);
+		rotate(obj);
 	else if (op / 3 == 2)
-		reverse_rotate(&obj);
+		reverse_rotate(obj);
 	if (op < 9 && op % 3 == 2)
 		ops(stack, op - 2, NULL);
 	if (op == 10)

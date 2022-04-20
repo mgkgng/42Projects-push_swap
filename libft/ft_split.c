@@ -6,13 +6,13 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:33:35 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:16:45 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/20 23:50:16 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	index_count(char const *s, char c)
+static int	index_count(char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -32,7 +32,7 @@ static int	index_count(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_strdup(const char *s1)
+static char	*ft_strdup(char *s1)
 {
 	char	*res;
 	int		i;
@@ -46,9 +46,9 @@ static char	*ft_strdup(const char *s1)
 	return (res);
 }
 
-static char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*ft_substr(char *s, int start, int len)
 {
-	size_t	i;
+	int		i;
 	char	*res;
 
 	if (!s)
@@ -69,10 +69,10 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (res);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char		**result;
-	char const	*start;
+	char		*start;
 	int			i;
 	int			len;
 
