@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:20:10 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 16:26:36 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:51:32 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ t_index	get_chunk(t_list *lst)
 			tmp.begin = lst->next->index;
 		lst = lst->next;
 	}
+	res.size = res.end - res.begin + 1;
 	return (res);
 }

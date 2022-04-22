@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/21 00:29:48 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:33:02 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 static int	check_error(char *s, char **argv)
 {
 	int	i;
-	int	j;
-	int	nb;
+	//int	j;
+	//int	nb;
 
+	(void) argv;
 	if (!ft_strlen(s))
 		return (0);
 	i = -1;
@@ -35,11 +36,11 @@ static int	check_error(char *s, char **argv)
 				return (0);
 		}
 		// should find a more elegant way to check this error
-		j = i;
+		/*j = i;
 		nb = ft_atoi(s);
 		while (argv[++j])
 			if (ft_atoi(argv[j]) == nb)
-				return (0);
+				return (0);*/
 	}
 	return (1);
 }

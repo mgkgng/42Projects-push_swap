@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/21 00:10:45 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:57:58 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ void	algo_push_b(t_stack *stack, t_index chunk)
 				ops(stack, 3, "ra");
 		}
 	}
-	if (stack->a->index < chunk.begin || stack->a->index > chunk.end)
-		ops(stack, 10, "pb");
-	else
-		ops(stack, 3, "ra");
+	while (ft_lstsize(stack->a) != chunk.size)
+	{
+		printf("%d----------\n", ft_lstsize(stack->a));
+		if (stack->a->index < chunk.begin || stack->a->index > chunk.end)
+			ops(stack, 10, "pb");
+		else
+			ops(stack, 3, "ra");
+	}
 }
 
 void	algo_push_a(t_stack *stack)

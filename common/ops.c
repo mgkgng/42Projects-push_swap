@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:27 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/21 00:09:19 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:42:12 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	rotate(t_list **l)
 	*l = tmp;
 }
 
+//* should code it in a much clearer way
 static void	reverse_rotate(t_list **l)
 {
 	t_list	*last;
@@ -57,11 +58,11 @@ static void	reverse_rotate(t_list **l)
 
 	if (ft_lstsize(*l) < 2)
 		return ;
-	last = ft_lstlast(*l);
-	last->next = *l;
 	tmp = *l;
 	while (tmp->next->next)
 		tmp = tmp->next;
+	last = tmp->next;
+	last->next = *l;
 	tmp->next = NULL;
 	*l = last;
 }
