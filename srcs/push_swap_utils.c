@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:06:25 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:11:05 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 11:29:02 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,45 +56,45 @@ int	find_next_min(t_list *l, int before)
 	return (min);
 }
 
-void	min_index_put(t_list **lst, int min, int min_index)
+void	put_min_pos(t_list **l, int min, int min_pos)
 {
 	t_list	*begin;
 
-	begin = *lst;
-	while ((*lst)->nb != min && *lst)
-		*lst = (*lst)->next;
-	(*lst)->pos = min_index;
-	*lst = begin;
+	begin = *l;
+	while (*l && (*l)->nb != min)
+		*l = (*l)->next;
+	(*l)->pos = min_pos;
+	*l = begin;
 }
 
-void	put_pos(t_list **lst)
+void	put_pos(t_list **l)
 {
 	int	index;
 	int	min;
 	int	size;
 
 	index = 0;
-	size = ft_lstsize(*lst);
-	min = find_min(*lst);
-	min_index_put(lst, min, index++);
+	size = ft_lstsize(*l);
+	min = find_min(*l);
+	put_min_pos(l, min, index++);
 	while (index < size)
 	{
-		min = find_next_min(*lst, min);
-		min_index_put(lst, min, index++);
+		min = find_next_min(*l, min);
+		put_min_pos(l, min, index++);
 	}
 }
 
-void	put_index(t_list **lst)
+void	put_index(t_list **l)
 {
 	t_list	*begin;
 	int		i;
 
 	i = 0;
-	begin = *lst;
-	while (*lst)
+	begin = *l;
+	while (*l)
 	{
-		(*lst)->index = i++;
-		(*lst) = (*lst)->next;
+		(*l)->index = i++;
+		*l = (*l)->next;
 	}
-	*lst = begin;
+	*l = begin;
 }

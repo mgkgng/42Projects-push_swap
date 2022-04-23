@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:08:11 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 11:28:02 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_move	get_shortest(t_list *a, t_list *b)
 	t_list	*begin_a;
 
 	begin_a = a;
+	res.sum = INT32_MAX;
 	while (b)
 	{
 		a = begin_a;
