@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 11:28:02 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 12:10:37 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 void	compare_move(t_move move, t_move *opt)
 {
-	if (move.rra)
-		move.ra = 0;
-	if (move.rrb)
-		move.rb = 0;
-	move.sum = move.ra + move.rb + move.rra + move.rrb;
-	if (opt->sum < move.sum)
+	if (move.sum < opt->sum)
 	{
 		opt->sum = move.sum;
 		opt->ra = move.ra;
@@ -68,7 +63,7 @@ void	make_move(t_stack *stack, t_move move)
 		ops(stack, 7, "rrb");
 		move.rrb--;
 	}
-	ops(stack, 9, "pa");
+	ops(stack, 10, "pa");
 }
 
 t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
@@ -84,6 +79,7 @@ t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
 		res.rb = b->index;
 	else
 		res.rra = sizeB - b->index;
+	res.sum = res.ra + res.rra + res.rb + res.rrb;
 	return (res);
 }
 
@@ -91,22 +87,27 @@ t_move	get_shortest(t_list *a, t_list *b)
 {
 	t_move	res;
 	t_list	*begin_a;
+	int		last_a;
 
 	begin_a = a;
+	ft_bzero(&res, sizeof(t_move));
 	res.sum = INT32_MAX;
 	while (b)
 	{
 		a = begin_a;
+		last_a = ft_lstlast(a)->nb;
 		while (a)
 		{
-			if (check_push(a->nb, ft_lstlast(a)->nb, b->nb))
+			if (check_push(a->nb, last_a, b->nb))
 			{
 				compare_move(define_move(a, b, ft_lstsize(a), ft_lstsize(b)), &res);
 				break ;
 			}
+			last_a = a->nb;
 			a = a->next;
 		}
 		b = b->next;
 	}
+	printf(" ra=%d, rra=%d, rb=%d, rrb=%d\n", res.ra, res.rra, res.rb, res.rrb);
 	return (res);
 }
