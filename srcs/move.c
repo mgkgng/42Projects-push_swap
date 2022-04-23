@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 12:10:37 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 22:19:01 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	compare_move(t_move move, t_move *opt)
 {
-	if (move.sum < opt->sum)
+	if (!opt->sum || move.sum < opt->sum)
 	{
 		opt->sum = move.sum;
 		opt->ra = move.ra;
@@ -87,20 +87,24 @@ t_move	get_shortest(t_list *a, t_list *b)
 {
 	t_move	res;
 	t_list	*begin_a;
+	int		size_a;
+	int		size_b;
 	int		last_a;
 
 	begin_a = a;
 	ft_bzero(&res, sizeof(t_move));
-	res.sum = INT32_MAX;
+	size_a = ft_lstsize(a);
+	size_b = ft_lstsize(b);
 	while (b)
 	{
 		a = begin_a;
 		last_a = ft_lstlast(a)->nb;
 		while (a)
 		{
+
 			if (check_push(a->nb, last_a, b->nb))
 			{
-				compare_move(define_move(a, b, ft_lstsize(a), ft_lstsize(b)), &res);
+				compare_move(define_move(a, b, size_a, size_b), &res);
 				break ;
 			}
 			last_a = a->nb;
@@ -108,6 +112,5 @@ t_move	get_shortest(t_list *a, t_list *b)
 		}
 		b = b->next;
 	}
-	printf(" ra=%d, rra=%d, rb=%d, rrb=%d\n", res.ra, res.rra, res.rb, res.rrb);
 	return (res);
 }
