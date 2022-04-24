@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:51 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 11:16:30 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/24 16:54:06 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ int	push_swap(t_stack *stack)
 		algo_push_b(stack, chunk);
 	algo_push_a(stack);
 	algo_rotate_a(stack);
-	ft_lstclear(&stack->a);
-	ft_lstclear(&stack->b);
+	while (stack->a)
+	{
+		printf("%d...", stack->a->nb);
+		stack->a = stack->a->next;
+	}
+	printf("\n");
+	
+	//ft_lstclear(&stack->a);
+	//ft_lstclear(&stack->b);
 	return (0);
 }

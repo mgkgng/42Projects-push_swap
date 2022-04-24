@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 22:19:01 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 22:23:13 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
 	return (res);
 }
 
-t_move	get_shortest(t_list *a, t_list *b)
+t_move	get_move(t_list *a, t_list *b)
 {
 	t_move	res;
 	t_list	*begin_a;

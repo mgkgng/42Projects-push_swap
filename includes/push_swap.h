@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:57 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:10:42 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/23 22:23:32 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_push(int first_a, int last_a, int first_b);
 
 /* move */
 void	make_move(t_stack *stack, t_move move);
-t_move	get_shortest(t_list *a, t_list *b);
+t_move	get_move(t_list *a, t_list *b);
 
 
 /* utils */

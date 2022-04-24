@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 22:07:04 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/24 18:07:45 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,21 @@ void	mini_swap(t_stack *stack)
 int	check_push(int first_a, int last_a, int first_b)
 {
 	if (first_a > first_b && first_a < last_a)
+	{
+		printf("11111111\n");
 		return (1);
+	}
 	else if (first_a > first_b && first_b > last_a)
+	{
+		printf("222222222\n");
 		return (1);
+	}
 	else if (first_a < last_a && first_b > last_a)
+	{
+		printf("33333333\n");
 		return (1);
+	}
+	printf("000000000\n");
 	return (0);
 }
 
@@ -74,13 +84,23 @@ void	algo_push_a(t_stack *stack)
 {
 	while (stack->b)
 	{
+		printf("b = %d ... a = %d \n", stack->b->nb, stack->a->nb);
+		t_list *save_a;
+		save_a = stack->a;
+		while (stack->a)
+		{
+			printf("...%d", stack->a->nb);
+			stack->a = stack->a->next;
+		}
+		printf("\n");
+		stack->a = save_a;
 		if (check_push(stack->a->nb, ft_lstlast(stack->a)->nb, stack->b->nb))
 			ops(stack, 10, "pa");
 		else
 		{
 			put_index(&stack->a);
 			put_index(&stack->b);
-			make_move(stack, get_shortest(stack->a, stack->b));
+			make_move(stack, get_move(stack->a, stack->b));
 		}
 	}
 }
