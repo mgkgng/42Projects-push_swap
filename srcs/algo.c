@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/24 18:07:45 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:53:08 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	mini_swap(t_stack *stack)
 
 int	check_push(int first_a, int last_a, int first_b)
 {
+	printf("---%d---%d---%d===\n", first_a, last_a, first_b);
 	if (first_a > first_b && first_a < last_a)
 	{
 		printf("11111111\n");
@@ -94,7 +95,7 @@ void	algo_push_a(t_stack *stack)
 		}
 		printf("\n");
 		stack->a = save_a;
-		if (check_push(stack->a->nb, ft_lstlast(stack->a)->nb, stack->b->nb))
+		if (check_push(stack->a->pos, ft_lstlast(stack->a)->pos, stack->b->pos))
 			ops(stack, 10, "pa");
 		else
 		{
