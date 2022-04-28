@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:14:37 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 18:23:03 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:29:43 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	terminate(t_list *a, t_list *b)
 {
 	if (checker(a, b))
 	{
-		free_list(a);
-		ft_putstr("OK\n");
+		ft_lstclear(&a);
+		ft_putendl("OK");
 		exit(EXIT_SUCCESS);
 	}
-	free_list(a);
-	free_list(b);
-	ft_putstr_fd("KO\n", STDERR_FILENO);
+	ft_lstclear(&a);
+	ft_lstclear(&b);
+	// i'm not sure if it was to stderr
+	ft_putendl_fd("KO", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

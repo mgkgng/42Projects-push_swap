@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:57 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 22:23:32 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:27:53 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct s_index {
 }	t_index;
 
 int		push_swap(t_stack *stack);
-void	ops(t_stack *stack, int op, char *s);
-t_list	*parse(int argc, char **argv);
 void	mini_swap(t_stack *stack);
 void	algo_push_b(t_stack *stack, t_index chunk);
 void	algo_push_a(t_stack *stack);

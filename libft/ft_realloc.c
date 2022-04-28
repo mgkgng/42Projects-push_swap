@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 16:59:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 16:27:57 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/28 16:20:06 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/28 16:20:06 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#include "libft.h"
 
-# include "libft.h"
+void	*ft_realloc(void *ptr, size_t new_size)
+{
+	size_t	current_size;
+	void	*new_ptr;
 
-typedef struct s_stack {
-	t_list	*a;
-	t_list	*b;
-}	t_stack;
-
-t_list	*parse(int argc, char **argv);
-void	ops(t_stack *stack, int op, char *s);
-int		error_exit(void);
-
-#endif
+	if (!ptr)
+		return (malloc(new_size));	
+	current_size = ft_strlen((char *) ptr);
+	if (current_size > new_size)
+		return (ptr);
+	new_ptr = malloc(new_size);
+	new_ptr = ft_memcpy(new_ptr, ptr, current_size);
+	free(ptr);
+	return (new_ptr);
+}

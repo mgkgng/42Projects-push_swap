@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:16:09 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/18 18:56:52 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:21:21 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 	while (ret)
 	{
 		buf[ret] = '\0';
-		r_data = ft_strjoin_gnl(r_data, buf);
+		r_data = ft_strcat(r_data, buf);
 		ret = read(0, &buf, BUFFER_SIZE);
 	}
-	execute(&a, &b, r_data);
+	execute(&stack, r_data);
 }
