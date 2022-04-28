@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 22:23:13 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:40:10 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
 	if (b->index <= sizeB / 2)
 		res.rb = b->index;
 	else
-		res.rra = sizeB - b->index;
+		res.rrb = sizeB - b->index;
 	res.sum = res.ra + res.rra + res.rb + res.rrb;
 	return (res);
 }
