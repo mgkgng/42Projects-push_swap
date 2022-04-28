@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 14:13:29 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/28 14:15:03 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,6 @@ void	push_or_rotate(t_stack *stack, t_index chunk, int size)
 			ops(stack, 11, "pb");
 		else
 			ops(stack, 3, "ra");
-}
-
-int	chunk_limit(t_list *l, t_index chunk, int i)
-{
-	int		res;
-	int		count;
-
-	res = ft_lstsize(l) * i / 3;
-	count = 0;
-	while (l && l->index <= chunk.end)
-	{
-		if (l->index >= chunk.begin && l->index < res)
-			count++;
-		l = l->next;
-	}
-	return (res - count);
 }
 
 void	algo_push_b(t_stack *stack, t_index chunk)
