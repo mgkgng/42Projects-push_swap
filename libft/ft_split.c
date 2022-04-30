@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:33:35 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/20 23:50:16 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/30 18:54:29 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,6 @@ static int	index_count(char *s, char c)
 		i++;
 	}
 	return (count);
-}
-
-static char	*ft_strdup(char *s1)
-{
-	char	*res;
-	int		i;
-
-	res = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		res[i] = s1[i];
-	return (res);
 }
 
 static char	*ft_substr(char *s, int start, int len)

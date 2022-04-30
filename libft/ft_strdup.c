@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 16:18:04 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/30 18:50:23 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/30 18:45:43 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/30 18:54:00 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strdup(char *s1)
 {
-	size_t	dlen;
-	size_t	slen;
+	char	*res;
 
-	if (!dest)
-		return (ft_strdup(src));
-	dlen = ft_strlen(dest);
-	slen = ft_strlen(src);
-	dest = (char *) ft_realloc(dest, dlen + slen + 1);
-	ft_strcpy(dest + dlen, src);
-	return (dest);
+	res = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
+	ft_strcpy(res, s1);
+	return (res);
 }

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 16:18:04 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/30 18:50:23 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/30 18:52:10 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/30 18:52:22 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, char *src)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	dlen;
-	size_t	slen;
+	size_t	i;
+	char	*p_dst;
+	char	*p_src;
 
-	if (!dest)
-		return (ft_strdup(src));
-	dlen = ft_strlen(dest);
-	slen = ft_strlen(src);
-	dest = (char *) ft_realloc(dest, dlen + slen + 1);
-	ft_strcpy(dest + dlen, src);
-	return (dest);
+	if (!n)
+		return (dst);
+	if (!dst && !src)
+		return (NULL);
+	p_dst = (char *) dst;
+	p_src = (char *) src;
+	i = 0;
+	while (i++ < n)
+		*p_dst++ = *p_src++;
+	return (dst);
 }
