@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:41:02 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/30 20:55:38 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/30 21:21:44 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char		*ft_strdup(char *s1);
 int			ft_strlen(char *s);
 void		ft_putendl(char *s);
 void		ft_putstr(char *s);
+char		*get_next_line(int fd);
 
 #endif

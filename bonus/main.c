@@ -6,24 +6,27 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:16:09 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 16:21:21 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/30 21:31:35 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	main(int argc, char **argv)
+char	**get_ops()
 {
-	t_stack	stack;
-	char	buf[BUFFER_SIZE];
-	int		ret;
+	char	*res;
 	char	*r_data;
 
-	if (argc < 2)
-		return (0);
-	stack.a = parse(argc, argv);
-	stack.b = NULL;
-	r_data = NULL;
+	res = NULL;
+	while (1)
+	{
+		r_data = get_next_line(0);
+		res = ft_strcat(res, r_data);
+		free(r_data);
+	}
+	printf("coucou\n");
+	return (ft_split(res, '\n'));
+	/*r_data = NULL;
 	ret = read(0, &buf, BUFFER_SIZE);
 	if (ret < 0)
 		execute(&stack, r_data);
@@ -33,5 +36,17 @@ int	main(int argc, char **argv)
 		r_data = ft_strcat(r_data, buf);
 		ret = read(0, &buf, BUFFER_SIZE);
 	}
-	execute(&stack, r_data);
+	*/
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	stack;
+
+
+	if (argc < 2)
+		return (0);
+	stack.a = parse(argc, argv);
+	stack.b = NULL;
+	execute(&stack, get_ops());
 }

@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:14:37 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 16:29:43 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/30 21:30:41 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	terminate(t_list *a, t_list *b)
 		exit(EXIT_SUCCESS);
 	}
 	ft_lstclear(&a);
-	ft_lstclear(&b);
-	// i'm not sure if it was to stderr
-	ft_putendl_fd("KO", STDERR_FILENO);
+	if (b)
+		ft_lstclear(&b);
+	ft_putendl("KO");
 	exit(EXIT_FAILURE);
 }
 
@@ -55,17 +55,22 @@ void	execute_op(t_stack *stack, char *to_do)
 		error_exit();
 }
 
-void	execute(t_stack *stack, char *s)
+void	execute(t_stack *stack, char **ops)
 {
-	char	**to_do;
+	//char	**to_do;
 	int		i;
 
-	if (!s)
+	/*if (!s)
 		terminate(stack->a, stack->b);
 	to_do = ft_split(s, '\n');
 	i = -1;
 	while (to_do[++i])
-		execute_op(stack, to_do[i]);
+		execute_op(stack, to_do[i]);*/
+	if (!ops[0])
+		terminate(stack->a, stack->b);
+	i = -1;
+	while (ops[++i])
+		execute_op(stack, ops[i]);
 	terminate(stack->a, stack->b);
 }
 
