@@ -6,58 +6,64 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/22 11:33:02 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/04/30 21:12:45 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_error(char *s, char **argv)
+static void	terminate(t_list *l)
+{
+	ft_lstclear(&l);
+	error_exit();
+}
+
+static void check_isdigit(char *s, t_list *l)
 {
 	int	i;
-	//int	j;
-	//int	nb;
 
-	(void) argv;
-	if (!ft_strlen(s))
-		return (0);
 	i = -1;
 	while (s[++i])
 	{
 		if (!ft_isdigit(s[i]))
 		{
-			if (!i && (s[i] == '-' || s[i] == '+'))
-			{
-				if (!s[i + 1])
-					return (0);
-				continue ;
-			}
+			if (!i && (s[i] == '-' || s[i] == '+') && s[i + 1])
+				continue;
 			else
-				return (0);
+				terminate(l);
 		}
-		// should find a more elegant way to check this error
-		/*j = i;
-		nb = ft_atoi(s);
-		while (argv[++j])
-			if (ft_atoi(argv[j]) == nb)
-				return (0);*/
 	}
-	return (1);
+}
+
+static void check_double(t_list *l, int new_nb)
+{
+	t_list	*begin;
+
+	begin = l;
+	while (l)
+	{
+		if (l->nb == new_nb)
+			terminate(begin);
+		l = l->next;
+	}
 }
 
 static t_list	*do_parse(char **argv, int start)
 {
-	t_list	*res;
+	t_list		*res;
+	long int	nb;
 
 	res = NULL;
 	while (argv[start])
 	{
-		if (!check_error(argv[start], argv))
-		{
-			ft_lstclear(&res);
-			error_exit();
-		}
-		ft_lstadd_back(&res, ft_lstnew(ft_atoi(argv[start++])));
+		if (!ft_strlen(argv[start]))
+			return (0);
+		check_isdigit(argv[start], res);
+		nb = ft_atol(argv[start++]);
+		if (nb > INT32_MAX || nb < INT32_MIN)
+			terminate(res);
+		check_double(res, nb);
+		ft_lstadd_back(&res, ft_lstnew((int) nb));
 	}
 	return (res);
 }

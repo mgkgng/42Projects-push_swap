@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 18:15:01 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/19 17:15:04 by min-kang         ###   ########.fr       */
+/*   Created: 2022/04/30 20:46:23 by min-kang          #+#    #+#             */
+/*   Updated: 2022/04/30 21:13:08 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../includes/push_swap.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atol(const char *str)
 {
-	long int	result;
+	long int	res;
 	int			i;
 	int			minus;
 
 	i = 0;
 	minus = 1;
-	result = 0;
+	res = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
@@ -32,13 +31,6 @@ int	ft_atoi(const char *str)
 	else if (str[i] == '+')
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
-	{
-		result = result * 10 + (str[i++] - '0');
-		if (result * minus > INT32_MAX || result * minus < INT32_MIN)
-		{
-			ft_putendl_fd("Error", STDERR_FILENO);
-			exit(EXIT_FAILURE);
-		}
-	}
-	return (result * minus);
+		res = res * 10 + (str[i++] - '0');
+	return (res * minus);
 }
