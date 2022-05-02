@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 13:40:10 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:03:07 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,25 +83,20 @@ t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
 	return (res);
 }
 
-t_move	get_move(t_list *a, t_list *b)
+t_move	get_move(t_list *a, t_list *b, int size_a, int size_b)
 {
 	t_move	res;
 	t_list	*begin_a;
-	int		size_a;
-	int		size_b;
 	int		last_a;
 
 	begin_a = a;
 	ft_bzero(&res, sizeof(t_move));
-	size_a = ft_lstsize(a);
-	size_b = ft_lstsize(b);
 	while (b)
 	{
 		a = begin_a;
 		last_a = ft_lstlast(a)->nb;
 		while (a)
 		{
-
 			if (check_push(a->nb, last_a, b->nb))
 			{
 				compare_move(define_move(a, b, size_a, size_b), &res);

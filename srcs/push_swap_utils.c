@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:06:25 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 11:29:02 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:57:47 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,4 @@ void	put_pos(t_list **l)
 		min = find_next_min(*l, min);
 		put_min_pos(l, min, index++);
 	}
-}
-
-void	put_index(t_list **l)
-{
-	t_list	*begin;
-	int		i;
-
-	i = 0;
-	begin = *l;
-	while (*l)
-	{
-		(*l)->index = i++;
-		*l = (*l)->next;
-	}
-	*l = begin;
 }

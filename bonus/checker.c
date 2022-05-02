@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 19:14:37 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/30 21:30:41 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:38:23 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,20 @@ void	execute_op(t_stack *stack, char *to_do)
 		error_exit();
 }
 
-void	execute(t_stack *stack, char **ops)
+char	**get_ops(void)
 {
-	//char	**to_do;
-	int		i;
+	char	*res;
+	char	*r_data;
 
-	/*if (!s)
-		terminate(stack->a, stack->b);
-	to_do = ft_split(s, '\n');
-	i = -1;
-	while (to_do[++i])
-		execute_op(stack, to_do[i]);*/
-	if (!ops[0])
-		terminate(stack->a, stack->b);
-	i = -1;
-	while (ops[++i])
-		execute_op(stack, ops[i]);
-	terminate(stack->a, stack->b);
+	res = NULL;
+	r_data = get_next_line(0);
+	while (r_data)
+	{
+		res = ft_strcat(res, r_data);
+		free(r_data);
+		r_data = get_next_line(0);
+	}
+	return (ft_split(res, '\n'));
 }
 
 int	checker(t_list *a, t_list *b)
@@ -85,4 +82,16 @@ int	checker(t_list *a, t_list *b)
 		a = a->next;
 	}
 	return (1);
+}
+
+void	execute(t_stack *stack, char **ops)
+{
+	int		i;
+
+	if (!ops)
+		terminate(stack->a, stack->b);
+	i = -1;
+	while (ops[++i])
+		execute_op(stack, ops[i]);
+	terminate(stack->a, stack->b);
 }

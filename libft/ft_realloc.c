@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:20:06 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 16:20:06 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:37:03 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_realloc(void *ptr, size_t new_size)
 	void	*new_ptr;
 
 	if (!ptr)
-		return (malloc(new_size));	
+		return (malloc(new_size));
 	current_size = ft_strlen((char *) ptr);
 	if (current_size > new_size)
 		return (ptr);

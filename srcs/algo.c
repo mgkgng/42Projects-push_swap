@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/28 14:15:03 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:35:21 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,6 @@ int	check_push(int first_a, int last_a, int first_b)
 	return (0);
 }
 
-void	push_or_rotate(t_stack *stack, t_index chunk, int size)
-{
-		if ((stack->a->index < chunk.begin || stack->a->index > chunk.end)
-			&& (!size || stack->a->pos < size))
-			ops(stack, 11, "pb");
-		else
-			ops(stack, 3, "ra");
-}
-
 void	algo_push_b(t_stack *stack, t_index chunk)
 {
 	int	i;
@@ -81,7 +72,8 @@ void	algo_push_a(t_stack *stack)
 		{
 			put_index(&stack->a);
 			put_index(&stack->b);
-			make_move(stack, get_move(stack->a, stack->b));
+			make_move(stack, get_move(stack->a, stack->b,
+					ft_lstsize(stack->a), ft_lstsize(stack->b)));
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/30 21:12:45 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:38:01 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	terminate(t_list *l)
 	error_exit();
 }
 
-static void check_isdigit(char *s, t_list *l)
+static void	check_isdigit(char *s, t_list *l)
 {
 	int	i;
 
@@ -28,14 +28,14 @@ static void check_isdigit(char *s, t_list *l)
 		if (!ft_isdigit(s[i]))
 		{
 			if (!i && (s[i] == '-' || s[i] == '+') && s[i + 1])
-				continue;
+				continue ;
 			else
 				terminate(l);
 		}
 	}
 }
 
-static void check_double(t_list *l, int new_nb)
+static void	check_double(t_list *l, int new_nb)
 {
 	t_list	*begin;
 
