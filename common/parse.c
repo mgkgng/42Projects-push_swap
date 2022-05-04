@@ -6,13 +6,13 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:06:14 by min-kang          #+#    #+#             */
-/*   Updated: 2022/05/02 15:38:01 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:08:34 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	terminate(t_list *l)
+static void	terminate_parse(t_list *l)
 {
 	ft_lstclear(&l);
 	error_exit();
@@ -30,7 +30,7 @@ static void	check_isdigit(char *s, t_list *l)
 			if (!i && (s[i] == '-' || s[i] == '+') && s[i + 1])
 				continue ;
 			else
-				terminate(l);
+				terminate_parse(l);
 		}
 	}
 }
@@ -43,7 +43,7 @@ static void	check_double(t_list *l, int new_nb)
 	while (l)
 	{
 		if (l->nb == new_nb)
-			terminate(begin);
+			terminate_parse(begin);
 		l = l->next;
 	}
 }
@@ -61,7 +61,7 @@ static t_list	*do_parse(char **argv, int start)
 		check_isdigit(argv[start], res);
 		nb = ft_atol(argv[start++]);
 		if (nb > INT32_MAX || nb < INT32_MIN)
-			terminate(res);
+			terminate_parse(res);
 		check_double(res, nb);
 		ft_lstadd_back(&res, ft_lstnew((int) nb));
 	}
