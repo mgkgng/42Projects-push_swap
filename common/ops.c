@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 16:05:27 by min-kang          #+#    #+#             */
-/*   Updated: 2022/04/23 21:58:12 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:44:14 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	rotate(t_list **l)
 	*l = tmp;
 }
 
-//* should code it in a much clearer way
 static void	reverse_rotate(t_list **l)
 {
 	t_list	*last;
@@ -97,8 +96,8 @@ void	ops(t_stack *stack, int op, char *s)
 		reverse_rotate(obj);
 	if (op < 9 && op % 3 == 2)
 		ops(stack, op - 2, NULL);
-	if (op == 10)
+	if (op == 9)
 		push(&stack->b, &stack->a);
-	else if (op == 11)
+	else if (op == 10)
 		push(&stack->a, &stack->b);
 }

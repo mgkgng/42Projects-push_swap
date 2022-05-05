@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:20:10 by min-kang          #+#    #+#             */
-/*   Updated: 2022/05/05 14:26:12 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:43:13 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	push_or_rotate(t_stack *stack, t_index chunk, int size)
 {
 	if ((stack->a->index < chunk.begin || stack->a->index > chunk.end)
 		&& (!size || stack->a->pos < size))
-		ops(stack, 11, "pb");
+		ops(stack, 10, "pb");
 	else
 		ops(stack, 3, "ra");
 }

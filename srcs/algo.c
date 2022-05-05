@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:22 by min-kang          #+#    #+#             */
-/*   Updated: 2022/05/02 15:35:21 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:42:39 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	mini_swap(t_stack *stack)
 {
 	while (ft_lstsize(stack->a) > 3)
-		ops(stack, 11, "pb");
+		ops(stack, 10, "pb");
 	if (stack->a->nb > stack->a->next->nb
 		&& stack->a->next->nb < ft_lstlast(stack->a)->nb
 		&& find_max(stack->a) == stack->a->nb)
@@ -67,7 +67,7 @@ void	algo_push_a(t_stack *stack)
 	while (stack->b)
 	{
 		if (check_push(stack->a->pos, ft_lstlast(stack->a)->pos, stack->b->pos))
-			ops(stack, 10, "pa");
+			ops(stack, 9, "pa");
 		else
 		{
 			put_index(&stack->a);

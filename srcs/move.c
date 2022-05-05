@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:05:18 by min-kang          #+#    #+#             */
-/*   Updated: 2022/05/02 15:03:07 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/05 16:42:58 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	make_move(t_stack *stack, t_move move)
 		ops(stack, 7, "rrb");
 		move.rrb--;
 	}
-	ops(stack, 10, "pa");
+	ops(stack, 9, "pa");
 }
 
 t_move	define_move(t_list *a, t_list *b, int sizeA, int sizeB)
