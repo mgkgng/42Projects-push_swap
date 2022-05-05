@@ -6,7 +6,7 @@
 /*   By: min-kang <minguk.gaang@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:20:10 by min-kang          #+#    #+#             */
-/*   Updated: 2022/05/02 15:35:27 by min-kang         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:26:12 by min-kang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,29 @@ void	put_index(t_list **l)
 	*l = begin;
 }
 
-// i could do it better again
-t_index	get_chunk(t_list *lst)
+t_index	get_chunk(t_list *l)
 {
+	int		size;
+	int		begin;
 	t_index	res;
-	t_index	tmp;
 
-	tmp.size = 0;
-	tmp.begin = lst->index;
 	ft_bzero(&res, sizeof(t_index));
-	while (lst->next)
+	while (l && l->next)
 	{
-		if (lst->nb < lst->next->nb)
-		{
-			tmp.end = lst->next->index;
-			tmp.size = tmp.end - tmp.begin + 1;
-			if (res.size < tmp.size)
-			{
-				res.size = tmp.size;
-				res.begin = tmp.begin;
-				res.end = tmp.end;
-			}
+		size = 1;
+		begin = l->index;
+		while (l->next && l->nb < l->next->nb)
+		{	
+			size++;
+			l = l->next;
 		}
-		else
-			tmp.begin = lst->next->index;
-		lst = lst->next;
+		if (size > res.size)
+		{
+			res.size = size;
+			res.begin = begin;
+			res.end = begin + size - 1;
+		}
+		l = l->next;
 	}
 	return (res);
 }
